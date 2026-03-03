@@ -1,0 +1,39 @@
+name: Generate JSDoc
+on:
+  push:
+    branches: [ "main" ] # Runs every time you push to main
+
+permissions:
+  contents: read
+  pages: write      # Required to deploy to GitHub Pages
+  id-token: write   # Required for security handshake
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install jsdoc # Or 'npm ci' if jsdoc is in your package.json
+
+      - name: Generate Documentation
+        run: npx jsdoc -c jsdoc.json # Assumes you have a config file
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './out' # The folder where JSDoc saves the HTML
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
