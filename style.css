@@ -377,7 +377,8 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 /* --- CHARACTER SECTION --- */
 .character-profiles {
     background: #0a0a0a;
-    padding: 40px 0 100px 0;
+    /* ADDED: More bottom padding for hover space */
+    padding: 40px 0 150px 0; 
     border-top: 1px solid rgba(255,255,255,0.1);
     text-align: center; /* FIXED: Centers "Select Your Swine" and "Usual Suspects" */
 }
@@ -404,6 +405,8 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     transition: all 0.3s ease;
     text-align: center;
     height: 100%;
+    /* ADDED: Margin to separate cards for hover overlay */
+    margin-bottom: 40px; 
 }
 
 .profile-card:hover {
