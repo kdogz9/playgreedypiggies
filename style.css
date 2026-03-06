@@ -434,7 +434,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     bottom: -100%;
     left: 0;
     width: 100%;
-    background: rgba(243, 58, 106, 0.9);
+    background:  #dd17ec(243, 58, 106, 0.9);
     color: white;
     padding: 15px 0;
     transition: 0.3s ease;
