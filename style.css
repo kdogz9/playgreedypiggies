@@ -416,21 +416,29 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     box-shadow: 0 10px 30px rgba(221, 23, 236, 0.2);
 }
 
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    /* CHANGED: 'contain' ensures the whole artwork is visible without cropping */
+    object-fit: contain; 
+    
+    /* Optional: Add a background color so if the image is tall/thin, 
+       the empty sides aren't just empty space */
+    background-color: #1a1a1a; 
+    
+    color: white; 
+}
+
+/* Adjust the container height if your artwork is vertically long */
 .profile-img {
     width: 100%;
-    height: 250px;
+    height: 400px; /* Increased from 250px to show more of the full-body art */
     background: #333;
     border-radius: 10px;
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
 }
-
-.profile-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    color: white; /* Shows alt text clearly if image is broken */
 }
 
 /* Stats that appear on hover */
