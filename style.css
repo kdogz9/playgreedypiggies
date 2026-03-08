@@ -114,6 +114,13 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     padding: 80px 20px;
 }
 
+/* NEW: Added wide container to fit 5 cards side-by-side */
+.container-wide {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
 .media-container {
     width: 80%;
     max-width: 800px;
@@ -143,12 +150,12 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 
 /* --- ABOUT US & BACKSTORY --- */
 .backstory {
-    text-align: center; /* FIXED: Centered title to match screenshot */
+    text-align: center;
     margin-bottom: 100px;
 }
 
 .backstory h1 {
-    font-size: 4.5rem; /* Matches your screenshot size */
+    font-size: 4.5rem;
     color: var(--pig-pink);
     margin: 20px 0;
 }
@@ -174,8 +181,8 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 .team-overview h2 { font-size: 2.5rem; color: white; }
 
 .dept-grid {
-    display: grid; /* FIXED: Switched to grid for the 2x2 layout */
-    grid-template-columns: repeat(2, 1fr); /* FIXED: This creates 2 equal columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-top: 50px;
 }
@@ -186,8 +193,8 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     border-radius: 15px;
     text-align: left;
     transition: transform 0.3s ease;
-    border-bottom: 5px solid var(--pig-pink); /* Restored signature pink glow line */
-    box-shadow: 0 10px 20px rgba(243, 58, 106, 0.1);
+    border-bottom: 5px solid var(--pig-pink);
+    box-shadow: 0 10px 20px rgba(221, 23, 236, 0.1);
 }
 
 .dept-box:hover { transform: translateY(-5px); }
@@ -252,9 +259,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 
 /* --- SHARED MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    /* Nav Mobile */
     .hamburger { display: flex; }
-
     .nav-links {
         display: none;
         position: absolute;
@@ -266,22 +271,12 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
         padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
-
     .menu-toggle:checked ~ .nav-links { display: flex; }
-
-    /* Nav Animation */
     .menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
     .menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* Footer Mobile */
-    .footer-section, .footer-section:last-child { text-align: center; }
-    .social-icons { align-items: center; }
-
-    /* Content Mobile */
     h1, .backstory h1 { font-size: 2.5rem; }
-    .dept-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .dept-grid, .profile-grid-five { grid-template-columns: 1fr !important; }
     #countdown { flex-wrap: wrap; }
 }
 
@@ -313,7 +308,6 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     margin-bottom: 120px;
 }
 
-/* This makes every second row flip sides */
 .lore-row.reverse {
     flex-direction: row-reverse;
 }
@@ -336,7 +330,6 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     overflow: hidden;
 }
 
-/* Stylized corner accents for the images */
 .img-frame::after {
     content: '';
     position: absolute;
@@ -377,23 +370,23 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 /* --- CHARACTER SECTION --- */
 .character-profiles {
     background: #0a0a0a;
-    /* ADDED: More bottom padding for hover space */
     padding: 40px 0 150px 0; 
     border-top: 1px solid rgba(255,255,255,0.1);
-    text-align: center; /* FIXED: Centers "Select Your Swine" and "Usual Suspects" */
+    text-align: center;
 }
 
 .character-profiles h2 {
     margin-top: 10px;
-    font-size: 2.8rem; /* Matches your screenshot */
+    font-size: 2.8rem;
     margin-bottom: 30px;
 }
 
-.profile-grid {
+/* NEW: Forced 5-column layout for "Meet the Piggies" */
+.profile-grid-five {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
-    justify-content: center;
-    gap: 50px;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px;
+    align-items: start;
     margin-top: 20px;
 }
 
@@ -405,40 +398,34 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     transition: all 0.3s ease;
     text-align: center;
     height: 100%;
-    /* ADDED: Margin to separate cards for hover overlay */
     margin-bottom: 40px; 
 }
 
 .profile-card:hover {
     transform: translateY(-10px);
     border-color: var(--gold);
-    /* UPDATED: Purple glow added here */
     box-shadow: 0 10px 30px rgba(221, 23, 236, 0.2);
 }
 
-.profile-img img {
-    width: 100%;
-    height: 100%;
-    /* CHANGED: 'contain' ensures the whole artwork is visible without cropping */
-    object-fit: contain; 
-    
-    /* Optional: Add a background color so if the image is tall/thin, 
-       the empty sides aren't just empty space */
-    background-color: #1a1a1a; 
-    
-    color: white; 
-}
-
-/* Adjust the container height if your artwork is vertically long */
 .profile-img {
     width: 100%;
-    height: 400px; /* Increased from 250px to show more of the full-body art */
+    height: 400px;
     background: #333;
     border-radius: 10px;
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    background-color: #1a1a1a; 
+    color: white; 
 }
 
 /* Stats that appear on hover */
@@ -447,7 +434,6 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     bottom: -100%;
     left: 0;
     width: 100%;
-    /* UPDATED: Uses pig-pink (purple) variable with 0.9 opacity */
     background: var(--pig-pink);
     opacity: 0.9;
     color: white;
@@ -476,8 +462,46 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 }
 
 .bio {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #bbb;
     line-height: 1.5;
+    text-align: left;
     font-family: 'Georgia', serif;
+}
+
+/* NEW: Large feature image box style */
+.lore-image-feature {
+    width: 100%;
+    max-width: 1100px;
+    height: 400px;
+    background: #1a1a1a;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    margin: 80px auto 0 auto;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.lore-image-feature:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(221, 23, 236, 0.2);
+}
+
+.lore-image-feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px 0;
+    font-size: 0.85rem;
+    text-transform: uppercase;
 }
