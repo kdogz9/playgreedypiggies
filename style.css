@@ -505,3 +505,54 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     font-size: 0.85rem;
     text-transform: uppercase;
 }
+
+/* --- LORE MOBILE RESPONSIVENESS --- */
+
+@media (max-width: 768px) {
+    /* 1. Header Adjustment */
+    .lore-header h1 {
+        font-size: 2.2rem; /* Shrinks the title so it fits */
+        padding: 0 10px;
+    }
+
+    /* 2. Story Rows (Top Section) */
+    /* This stacks the image on top of the text instead of side-by-side */
+    .lore-row, 
+    .lore-row.reverse {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .lore-image, 
+    .lore-text {
+        width: 100%; /* Makes them take up the full width of the phone */
+    }
+
+    .img-frame {
+        height: 250px; /* Reduces height so you don't have to scroll forever */
+    }
+
+    /* 3. The Piggy Grid (The 5 cards) */
+    /* This changes the 5 columns into 1 single column */
+    .profile-grid-five {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+        padding: 0 10px;
+    }
+
+    .profile-card {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .profile-img {
+        height: 350px; /* Keeps the character art at a good viewing size */
+    }
+
+    /* 4. Feature Box */
+    .lore-image-feature {
+        height: 250px;
+        margin-top: 40px;
+    }
+}
