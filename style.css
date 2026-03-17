@@ -301,11 +301,13 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     padding: 80px 20px;
 }
 
+/* FIXED: Ensuring Side-by-Side layout for Game Overview */
 .lore-row {
-    display: flex;
+    display: flex; 
     align-items: center;
     gap: 60px;
     margin-bottom: 120px;
+    width: 100%;
 }
 
 .lore-row.reverse {
@@ -314,6 +316,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 
 .lore-image {
     flex: 1;
+    max-width: 50%;
 }
 
 .img-frame {
@@ -328,6 +331,13 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     font-size: 0.8rem;
     position: relative;
     overflow: hidden;
+    border-radius: 15px;
+}
+
+.img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .img-frame::after {
@@ -343,6 +353,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 
 .lore-text {
     flex: 1;
+    max-width: 50%;
 }
 
 .chapter {
@@ -381,7 +392,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     margin-bottom: 30px;
 }
 
-/* NEW: Forced 5-column layout for "Meet the Piggies" */
+/* Forced 5-column layout for "Meet the Piggies" */
 .profile-grid-five {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
@@ -469,7 +480,7 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     font-family: 'Georgia', serif;
 }
 
-/* NEW: Large feature image box style */
+/* Large feature image box style */
 .lore-image-feature {
     width: 100%;
     max-width: 1100px;
@@ -507,16 +518,12 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 }
 
 /* --- LORE MOBILE RESPONSIVENESS --- */
-
 @media (max-width: 768px) {
-    /* 1. Header Adjustment */
     .lore-header h1 {
-        font-size: 2.2rem; /* Shrinks the title so it fits */
+        font-size: 2.2rem;
         padding: 0 10px;
     }
 
-    /* 2. Story Rows (Top Section) */
-    /* This stacks the image on top of the text instead of side-by-side */
     .lore-row, 
     .lore-row.reverse {
         flex-direction: column !important;
@@ -526,15 +533,14 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
 
     .lore-image, 
     .lore-text {
-        width: 100%; /* Makes them take up the full width of the phone */
+        width: 100%;
+        max-width: 100%;
     }
 
     .img-frame {
-        height: 250px; /* Reduces height so you don't have to scroll forever */
+        height: 250px;
     }
 
-    /* 3. The Piggy Grid (The 5 cards) */
-    /* This changes the 5 columns into 1 single column */
     .profile-grid-five {
         grid-template-columns: 1fr !important;
         gap: 30px;
@@ -547,19 +553,19 @@ h1 { font-size: 4rem; color: var(--pig-pink); margin: 10px 0; }
     }
 
     .profile-img {
-        height: 350px; /* Keeps the character art at a good viewing size */
+        height: 350px;
     }
 
-    /* 4. Feature Box */
     .lore-image-feature {
         height: 250px;
         margin-top: 40px;
     }
 }
-/* Ensures the image fills the frame but keeps its shape */
+
+/* Fit image utility */
 .lore-fit-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This crops the image to fill the box perfectly */
-    border-radius: 12px; /* Matches your frame corners */
+    object-fit: cover;
+    border-radius: 12px;
 }
